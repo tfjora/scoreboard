@@ -20,7 +20,7 @@ export default function View({ scoreBoard, displayQuotes }: Props) {
     const mappedScoreBoard = scoreBoard?.map((p) => ({
         ...p,
         datedPlayed: getDayMonthYear(p.datedPlayed),
-        name: `${p.person.firstName} ${p.person.lastName}`,
+        name: `${p.person.FirstName} ${p.person.LastName}`,
     }));
 
     const columns = useMemo(

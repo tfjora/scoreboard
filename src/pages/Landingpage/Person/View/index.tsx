@@ -2,7 +2,6 @@ import MaterialReactTable from 'material-react-table';
 import { useMemo } from 'react';
 
 import type { IPerson } from '../../../../_models/Person';
-import { calculateAge } from '../../../../_utilities/date';
 import { useStyles } from './styles';
 
 type Props = {
@@ -13,7 +12,6 @@ export default function View({ persons }: Props) {
 
     const mappedPerson = persons?.map((p) => ({
         ...p,
-        ageString: calculateAge(p.dateBorn),
     }));
     const columns = useMemo(
         () => [
@@ -24,10 +22,6 @@ export default function View({ persons }: Props) {
             {
                 accessorKey: 'lastName',
                 header: 'Last Name',
-            },
-            {
-                accessorKey: 'ageString', //normal accessorKey
-                header: 'Age',
             },
         ],
         []

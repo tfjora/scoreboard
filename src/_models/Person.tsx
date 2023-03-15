@@ -1,11 +1,13 @@
 export interface IPerson {
     firstName: string;
     lastName: string;
-    dateBorn: string;
+}
+export interface IPersonResult {
+    FirstName: string;
+    LastName: string;
 }
 
 export enum PersonItem {
-    firstName = 'firstName',
-    lastName = 'lastName',
-    dateBorn = 'dateBorn',
+    firstName = 'FirstName',
+    lastName = 'LastName',
 }

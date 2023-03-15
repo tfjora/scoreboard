@@ -1,8 +1,8 @@
-import type { IPerson } from './Person';
+import type { IPersonResult } from './Person';
 
 export interface IScoreBoard {
     paid: number;
     won: number;
-    person: IPerson;
+    person: IPersonResult;
     datedPlayed: string;
 }
