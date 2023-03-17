@@ -1,8 +1,6 @@
 import { Button, TextField } from '@material-ui/core';
-import { format } from 'date-fns';
 import { useEffect, useState } from 'react';
 
-import { DATE_FNS } from '../../../../_constants/date';
 import useAccountContext from '../../../../_context/tokenContext';
 import DropDown from '../../../../components/Dropdown';
 import { useStyles } from './style';
@@ -11,12 +9,11 @@ type Props = { onSave: any };
 
 export default function Add({ onSave }: Props) {
     const [values, setValues] = useState({
-        date: format(new Date(), DATE_FNS.ISO_YYYY_MM_DD),
-        height: '',
+        paid: '',
         personId: '',
-        weight: '',
+        won: '',
     });
-    const [person, setPerson] = useState('tete');
+    const [person, setPerson] = useState('Not selected');
     const [menuItems, setMenuItems] = useState([{ key: '', label: '' }]);
     const styles = useStyles();
     const { token } = useAccountContext();
@@ -74,26 +71,18 @@ export default function Add({ onSave }: Props) {
                     menuItems={menuItems}
                 />
                 <TextField
-                    id="date"
-                    label="Date"
-                    type="date"
-                    name="date"
+                    label="Paid"
+                    name="paid"
                     onChange={handleChange}
-                    value={values.date}
-                />
-                <TextField
-                    label="Weight"
-                    name="weight"
-                    onChange={handleChange}
-                    value={values.weight}
+                    value={values.paid}
                     required
                 />
                 <TextField
-                    label="Height"
-                    name="height"
+                    label="Won"
+                    name="won"
                     onChange={handleChange}
                     required
-                    value={values.height}
+                    value={values.won}
                 />
 
                 <Button color="primary" variant="contained" onClick={onClick}>

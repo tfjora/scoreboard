@@ -1,12 +1,9 @@
-import { format } from 'date-fns';
 import Highcharts from 'highcharts';
 import HighchartsReact from 'highcharts-react-official';
 import MaterialReactTable from 'material-react-table';
 import { useMemo } from 'react';
 
-import { DATE_FNS } from '../../../../_constants/date';
-import type { IScoreBoard } from '../../../../_models/PersonDetail';
-import { getDayMonthYear } from '../../../../_utilities/date';
+import type { IScoreBoard } from '../../../../_models/ScoreBoard';
 import { options } from './highchartsOptions';
 import { useStyles } from './styles';
 
@@ -19,7 +16,6 @@ export default function View({ scoreBoard, displayQuotes }: Props) {
     const styles = useStyles();
     const mappedScoreBoard = scoreBoard?.map((p) => ({
         ...p,
-        datedPlayed: getDayMonthYear(p.datedPlayed),
         name: `${p.person.FirstName} ${p.person.LastName}`,
     }));
 
@@ -36,10 +32,6 @@ export default function View({ scoreBoard, displayQuotes }: Props) {
             {
                 accessorKey: 'won', //normal accessorKey
                 header: 'Won',
-            },
-            {
-                accessorKey: 'datedPlayed', //normal accessorKey
-                header: 'Date submitted',
             },
         ],
         []
@@ -61,11 +53,8 @@ export default function View({ scoreBoard, displayQuotes }: Props) {
         }),
         [mappedScoreBoard]
     );
-    const categories = useMemo(
-        () => scoreBoard?.map((d) => format(new Date(d.datedPlayed), DATE_FNS.DD_MM_YYYY)),
-        [scoreBoard]
-    );
-    const chartOptions = options(wonData, paidData, categories);
+    
+    const chartOptions = options(wonData, paidData);
 
     return (
         <div className={styles.container}>

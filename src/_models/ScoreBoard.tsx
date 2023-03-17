@@ -4,5 +4,4 @@ export interface IScoreBoard {
     paid: number;
     won: number;
     person: IPersonResult;
-    datedPlayed: string;
 }

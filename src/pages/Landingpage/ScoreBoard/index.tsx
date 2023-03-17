@@ -3,7 +3,7 @@ import AddIcon from '@mui/icons-material/Add';
 import { useEffect, useState } from 'react';
 
 import useAccountContext from '../../../_context/tokenContext';
-import type { IScoreBoard } from '../../../_models/PersonDetail';
+import type { IScoreBoard } from '../../../_models/ScoreBoard';
 import Add from './Add';
 import { useStyles } from './styles';
 import View from './View';

@@ -64,15 +64,6 @@ export default function Add({ onSave }: Props) {
                     value={values.lastName}
                     disabled={isSaving}
                 />
-                <TextField
-                    id="date"
-                    label="Date born"
-                    type="date"
-                    name="dateBorn"
-                    onChange={handleChange}
-                    value={values.dateBorn}
-                    disabled={isSaving}
-                />
 
                 {isSaving ? (
                     <CircularProgress size={24} />

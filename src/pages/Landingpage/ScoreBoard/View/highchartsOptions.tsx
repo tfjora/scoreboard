@@ -1,4 +1,4 @@
-export const options = (weightData: any, heightData: any, categories: any) => {
+export const options = (weightData: any, heightData: any) => {
     return {
         legend: {
             align: 'right',
@@ -22,7 +22,7 @@ export const options = (weightData: any, heightData: any, categories: any) => {
         },
 
         xAxis: {
-            categories: categories,
+            categories: [],
             // tickColor: '#000',
         },
     };
