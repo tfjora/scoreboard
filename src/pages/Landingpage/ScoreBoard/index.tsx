@@ -17,12 +17,12 @@ export default function ScoreBoard() {
 
     const onSave = async (content: any) => {
         const request = {
-            body: JSON.stringify(content),
+            body: JSON.stringify(content?.id, content),
             headers: {
                 Authorization: `Bearer ${token}`,
                 'Content-Type': 'application/json',
             },
-            method: 'POST',
+            method: 'PUT',
         };
 
         await fetch('https://api-scoreboard.azurewebsites.net/api/result', request)
@@ -39,7 +39,7 @@ export default function ScoreBoard() {
             method: 'GET',
         };
         async function fetchData() {
-            await fetch('https://api-scoreboard.azurewebsites.net/api/result', request)
+            await fetch('https://api-scoreboard.azurewebsites.net/api/results', request)
                 .then((b) => b.json())
                 .then((data) => setScoreBoard(data));
         }
